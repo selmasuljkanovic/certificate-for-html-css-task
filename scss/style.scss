@@ -1,0 +1,437 @@
+@import url('https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&family=Open+Sans:wght@300;400;500;600;800&display=swap');
+
+$blue:#3A8BCD;
+$gray:#4A4A4A;
+$black:#1E1E1E;
+$white:#FFFFFF;
+$transition: .3s ease;
+$fontFamily: 'Open Sans', sans-serif;
+$fontSize:14px;
+$lightGray:#eee;
+$padding:100px 0;
+
+@mixin flex($align:center, $justify: space-between, $direction: row) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+@mixin img($position:center,$size:cover,$repate:no-repeat){
+    background-position: $position;
+    background-size: $size;
+    background-repeat: repeat;
+}
+@mixin btn($bg, $cl,$bg2,$cl2) {
+    background: $bg;
+    color: $cl;
+    padding:10px 20px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    font-weight: 500;
+    &:hover{
+        background: $bg2;
+        color: $cl2;
+        transition: $transition;
+    }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    color: $gray;
+    line-height: 1.5;
+}
+
+a{
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Coda Caption', sans-serif;
+}
+
+ul{
+    list-style: none;
+}
+.container{
+    width: 70%;
+    margin:0 auto;
+    @media (max-width:767px){
+        width: 90%;
+    }
+}
+h2::before{
+    display: block;
+    content: "";
+    width: 30px;
+    height: 3px;
+    background: $blue;
+    margin-bottom: 10px;
+}
+hr{
+    background-color: $lightGray;
+    border: 0 none;
+    color: $lightGray;
+    height: 1px;
+    margin: 20px 0;
+}
+.item{
+    border:1px solid $lightGray;
+    border-radius: 5px;
+    padding: 10px;
+    &:hover{
+        border: 1px solid $blue;
+    }
+    a{
+        h3{
+            color: $gray;
+        }
+        p{
+            color: $blue;
+        }
+    }
+}
+/*******************
+nav
+*******************/
+nav{
+    text-align: center;
+    border-top: 5px solid $blue;
+    margin-bottom: 20px;
+    .logo{
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 1.5rem;
+        font-weight: 800;
+        font-family: 'Coda Caption', sans-serif;
+        color: $blue;
+        text-shadow: 0 0 2px $black;
+        i{
+            color: $black;
+            font-size: 1.7rem;
+        }
+    }
+    ul{
+        @include flex($justify:center);
+        a{
+            margin-left: 20px;
+            text-transform: uppercase;
+            color: $black;
+            &:hover{
+                color: $blue;
+                transition: $transition;
+            }
+        }
+    }
+ 
+}
+
+/*********************
+header
+**********************/
+header{
+    background-image: url(../img/header.jpg);
+    padding: 200px 0;
+    @include img($position: center top);
+    @include flex;
+    @media (max-width:767px){
+        @include img(center right, cover, no-repeat);
+        padding: 150px 0;
+    }
+    article{
+        background: rgba(232, 226, 225,.7);
+        width: 35%;
+        margin-left: 100px;
+        padding: 20px;
+        @media (max-width:767px){
+            width: 80%;
+            margin-left: 40px;
+        }
+        h1{
+            color: $black;
+            &::after{
+                    display: block;
+                    content: "";
+                    height: 3px;
+                    width: 30px;
+                    background: $blue;
+                    margin: 10px 0;
+            }
+        }
+        p{
+            font-weight: 500;
+        }
+        button{
+            text-transform: uppercase;
+            @include btn($blue, $white, $black, $white);
+            font-weight: 500;
+        }
+    }
+}
+/*********************
+feaaturedItems
+**********************/
+.featuredItems{
+    padding: $padding;
+    h2{
+        padding-bottom:40px;
+    }
+}
+/*********************
+subscribe
+**********************/
+.subscribe{
+    background: $blue;
+    padding: $padding;
+    text-align: center;
+    p{
+        margin: 20px 0;
+        color: $white;
+    }
+    input{
+        border: 1px solid $white;
+        border-radius: 5px;
+        background: transparent;
+        padding: 10px;
+        color: $lightGray;
+    }
+    button{
+        @include btn($white, $gray, $black, $white);
+    }
+}
+/*********************
+footer
+**********************/
+footer{
+    text-align: center;
+   article{
+    padding: $padding;
+    @media (max-width:767px){
+       padding: 50px 0;
+    }
+    .logo{
+        display: inline-block;
+        margin: 10px 0 20px 0;
+        font-size: 1.5rem;
+        font-weight: 800;
+        font-family: 'Coda Caption', sans-serif;
+        color: $blue;
+        text-shadow: 0 0 2px $black;
+        i{
+            color: $black;
+            font-size: 1.7rem;
+        }
+    }
+    ul{
+        @include flex($justify:center);
+        a{
+            margin-left: 20px;
+            text-transform: uppercase;
+            color: $black;
+            &:hover{
+                color: $blue;
+                transition: $transition;
+            }
+        }
+    }
+    i{
+        margin-top: 20px;
+        font-size: 1.5rem;
+        margin-right: 10px;
+        color: $gray;
+        &:hover{
+            color: $blue;
+            transition: $transition;
+        }
+    }
+   }
+   p{
+       margin-bottom: 20px;
+   }
+}
+/*********************
+aboutUs
+**********************/
+.aboutUs{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   padding: $padding;
+   @media (max-width:767px){
+    padding: 0px 0 50px 0;
+}
+    article{
+        &:first-child{
+            flex:0 0 39%;
+            @media (max-width:767px){
+                flex: 0 0 100%;
+                padding-top: 20px;
+            }
+        }
+        &:last-child{
+            flex:0 0 59%;
+            margin-top: 50px;
+            @media (max-width:767px){
+                flex: 0 0 100%;
+                margin-top: 0;
+            }
+        }
+        h2{
+            padding-bottom:20px;
+        }
+        img{
+            width: 100%;
+        }
+        p{
+           
+            margin-top: 10px;
+            line-height: 2;
+            font-size: 12px; 
+        }
+        i{
+            color: $blue;
+            margin-right: 10px;
+            &:hover{
+                color: $gray;
+                transition: $transition;
+            }
+        }
+    }
+}
+/*********************
+contactUs
+**********************/
+.contactUs{
+    @include flex;
+    padding: $padding;
+    @media (max-width:767px){
+        padding: 50px 0;
+    }
+    article{
+        flex:0 0 48%;
+        @media (max-width:767px){
+            flex: 0 0 100%;
+        }
+        form{
+            margin-top: 30px;
+            @include flex(flex-start, center, column);
+            input,
+            textarea{
+                width: 100%;
+                margin-bottom: 5px;
+                padding: 12px;
+                border: 1px solid #8F8F9D;
+                border-radius: 2px;
+            }
+            button{
+                @include btn($blue, $white, $black, $white);
+                text-transform: uppercase;
+                margin: 15px 0 10px 0;
+            }
+        }
+        i{
+            color: $blue;
+            margin-right: 10px;
+            &:hover{
+                color: $gray;
+                transition: $transition;
+            }
+        }
+        hr{
+            background-color: $lightGray;
+            border: 0 none;
+            color: $gray;
+            height: 2px;
+            margin: 10px 0; 
+        }
+    }
+}
+/*********************
+products
+**********************/
+.products{
+    padding: $padding;
+    @include flex;
+    @media (max-width:767px){
+       padding: 50px 0;
+    }
+    .item{
+        flex:0 0 24%;
+        margin-bottom: 20px;
+        @media (max-width:767px){
+            flex: 0 0 100%;
+        }
+        img{
+            width: 100%;
+        }
+    }
+   
+}
+/*********************
+singleProduct
+**********************/
+.singleProduct{
+    padding: $padding;
+    @media (max-width:767px){
+        padding: 20px 0;
+    }
+    h2{
+        margin-bottom: 20px;
+    }
+   div{
+    @include flex(flex-start, space-between, row);
+    article:first-child{
+        flex:0 0 39%;
+        @media (max-width:767px){
+            flex: 0 0 100%;
+        }
+            img{
+                width: 100%;
+                border: 1px solid $blue;
+                border-radius: 5px;
+            }
+    }
+    article:last-child{
+        flex:0 0 59%;
+        @media (max-width:767px){
+            flex: 0 0 100%;
+        }
+      p{
+        margin-bottom: 20px;
+        &:nth-child(2){
+            color: $blue;
+        }
+      }
+      form{
+        select{
+            padding: 10px;
+            border: 1px solid $blue;
+            border-radius: 5px;
+        }
+        button{
+            @include btn($blue, $white, $black, $white);
+            text-transform: uppercase;
+        }
+      }
+      i{
+        color: $blue;
+        margin-right: 10px;
+        &:hover{
+            color: $gray;
+            transition: $transition;
+      }
+    }
+      a{
+          color: $blue;
+      }
+    }
+   }
+}
